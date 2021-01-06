@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/root/russia",
+  "command": "g++   -I/root/russia/include  -g   -o CMakeFiles/russia.dir/src/russia.cpp.o -c /root/russia/src/russia.cpp",
+  "file": "/root/russia/src/russia.cpp"
+}
+]
