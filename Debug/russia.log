@@ -2,7 +2,48 @@
   SSH: Handshaking...
   SSH: Checking key...
   SSH: Authenticating...
-  VisualGDB: No file changes detected. If you believe it's a mistake, please clean the project and build it again.
+  VisualGDB: Sending 1 updated source file to build machine...
   VisualGDB: Run "make " in directory "/root/russia//." on root@172.16.7.106 (SSH)
-  [100%] Built target russia
-VisualGDB : warning : Failed to fetch compiler argument database file (/root/russia//./compile_commands.json). IntelliSense setup won't be precise.
+  Scanning dependencies of target russia
+  [ 50%] Building CXX object CMakeFiles/russia.dir/src/russia.cpp.o
+  /root/russia/src/russia.cpp: In function ‘int main()’:
+D:\code\russia\russia\src\russia.cpp(91,35): error : no matching function for call to ‘std::thread::thread(<unresolved overloaded function type>, std::reference_wrapper<int>)’
+    thread first(func1, std::ref(ret));
+                                     ^
+  D:\code\russia\russia\src\russia.cpp(6):
+  C:\Users\Administrator\AppData\Local\VisualGDB\RemoteSourceCache\172.16.7.106\0000\include\c++\7\thread(118,7): note :  candidate: template<class _Callable, class ... _Args> std::thread::thread(_Callable&&, _Args&& ...)
+         thread(_Callable&& __f, _Args&&... __args)
+         ^~~~~~
+  C:\Users\Administrator\AppData\Local\VisualGDB\RemoteSourceCache\172.16.7.106\0000\include\c++\7\thread(118,7): note :    template argument deduction/substitution failed:
+  D:\code\russia\russia\src\russia.cpp(91,35): note :    couldn't deduce template parameter ‘_Callable’
+    thread first(func1, std::ref(ret));
+                                     ^
+  D:\code\russia\russia\src\russia.cpp(6):
+  C:\Users\Administrator\AppData\Local\VisualGDB\RemoteSourceCache\172.16.7.106\0000\include\c++\7\thread(113,5): note :  candidate: std::thread::thread(std::thread&&)
+       thread(thread&& __t) noexcept
+       ^~~~~~
+  C:\Users\Administrator\AppData\Local\VisualGDB\RemoteSourceCache\172.16.7.106\0000\include\c++\7\thread(113,5): note :    candidate expects 1 argument, 2 provided
+  C:\Users\Administrator\AppData\Local\VisualGDB\RemoteSourceCache\172.16.7.106\0000\include\c++\7\thread(106,5): note :  candidate: std::thread::thread()
+       thread() noexcept = default;
+       ^~~~~~
+  C:\Users\Administrator\AppData\Local\VisualGDB\RemoteSourceCache\172.16.7.106\0000\include\c++\7\thread(106,5): note :    candidate expects 0 arguments, 2 provided
+D:\code\russia\russia\src\russia.cpp(92,33): error : ‘bind’ is not a member of ‘std’
+    std::thread second(func1, std::bind(func1,1));
+                                   ^~~~
+  D:\code\russia\russia\src\russia.cpp(92,33): note :  suggested alternative: ‘find’
+    std::thread second(func1, std::bind(func1,1));
+                                   ^~~~
+                                   find
+  CMakeFiles/russia.dir/build.make:62: recipe for target 'CMakeFiles/russia.dir/src/russia.cpp.o' failed
+  CMakeFiles/Makefile2:67: recipe for target 'CMakeFiles/russia.dir/all' failed
+  Makefile:83: recipe for target 'all' failed
+  make[2]: *** [CMakeFiles/russia.dir/src/russia.cpp.o] Error 1
+  make[1]: *** [CMakeFiles/russia.dir/all] Error 2
+  make: *** [all] Error 2
+  -------------------------------------------------------------
+  Command exited with code 2
+  Executable: make
+  Arguments: 
+  Directory: /root/russia//.
+VisualGDB : error : Command-line action failed
+E:\Program File (x86)\Microsoft Visual Studio\Common7\IDE\VC\VCTargets\Microsoft.MakeFile.Targets(44,5): error MSB3073: 命令“"C:\Program Files (x86)\Sysprogs\VisualGDB\VisualGDB.exe" /build "D:\code\russia\russia\russia.vcxproj" "/solution:D:\code\russia\russia.sln"  "/config:Debug" "/platform:Win32"”已退出，代码为 1。

@@ -1,6 +1,16 @@
 #ifndef _RUSSIA_H_
 #define _RUSSIA_H_
 
-void openlog();
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
+
+
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif //_RUSSIA_H_

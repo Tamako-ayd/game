@@ -49,11 +49,17 @@ extern int __is_printf;
 #define LOGC(color_flag, msg, ...) log_printf(1,color_flag,"[%s-%d]:"msg, __FUNCTION__, __LINE__, ##__VA_ARGS__)
 #define LOGCNT(color_flag, msg, ...) log_printf(0, color_flag, msg, ##__VA_ARGS__)
 
+#ifdef __cplusplus
 extern "C" {
+#endif
+
 	int _creat_log_path(const char *path);
 	int creat_log(const char *path, const char *tag);
 	void log_printf(uint8_t log_time_flag, int color_flag, const char *fmt, ...);
+
+#ifdef __cplusplus
 }
+#endif
 
 #ifdef LOGS
 typedef struct log_node

@@ -54,5 +54,8 @@
     <ClInclude Include="include\head4log.h">
       <Filter>Header files\include</Filter>
     </ClInclude>
+    <ClInclude Include="input.h">
+      <Filter>Header files\include</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

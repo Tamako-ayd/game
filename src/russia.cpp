@@ -1,69 +1,76 @@
 #include "head4log.h"
 #include "russia.h"
+#include <pthread.h>
+#include <string.h>
+
 #include <iostream>
+#include <string>
+#include <thread>
+#include <mutex>
 
 namespace Tetris {
 
 	class Scr {
 	public:
-		Scr(int x, int y) : _wide(x), _high(y), _size(x*y)
-		{
+		Scr(int x, int y);
+		~Scr();
+		int wide() { return m_wide; };
+		int high() { return m_high; };
+		int size() { return m_size; };
 
-		}
-
-		Scr(const Scr &_scr) : _wide(_scr._wide), _high(_scr._high), _size(_scr._size)
-		{
-
-		}
-
-		int size() {
-			return _size;
-		}
-
-		int wide() {
-			return _wide;
-		}
-
-		int high() {
-			return _high;
-		}
 	protected:
-		const int _wide;
-		const int _high;
-		const int _size;
-
+		const int m_wide;
+		const int m_high;
+		const int m_size;
 	};
+
+	Scr::Scr(int x, int y) : m_wide(x), m_high(y), m_size(x*y) {}
+	Scr::~Scr() {}
 
 	class Game {
 	public:
-		char *buf;
-		size_t buf_size;
+		char *m_buf;
+		char *m_map;
+		pthread_mutex_t m_scrMutex;
 
-		Game(const int x = 5, const int y = 10) : scr(x , y)
+		void gameInit()
 		{
-			buf_size = scr.size() * 4;
-			buf = new char[buf_size];
+			m_mapSize = (this->m_scr.high() + 2)*(this->m_scr.wide() + 2);
+			m_map = new char[m_mapSize];
+			memset(m_map, 0, m_mapSize);
+
+			m_bufSize = this->m_mapSize * 4;
+			m_buf = new char[m_bufSize];
+			memset(m_buf, 0, m_bufSize);
+
+			m_scrMutex = PTHREAD_MUTEX_INITIALIZER;
 		}
 
-		Game(const Scr &_scr) : scr(_scr)
-		{
-			buf_size = scr.high() * 4;
-			buf = new char[buf_size];
-		}
-		
+		Game(const int x = 5, const int y = 10) :m_scr(x, y) { gameInit(); };
+		Game(const Scr &scr) :m_scr(scr) { gameInit(); };
+		~Game() { delete m_buf; };
 
-	protected:
-		Scr scr;
+		size_t bufSize() { return m_bufSize; };
+		size_t mapSize() { return m_mapSize; };
+
+	private:
+		Scr m_scr;
+		size_t m_bufSize;
+		size_t m_mapSize;
 	};
-
 }
 
-using namespace std;
+
+
 using namespace Tetris;
+using namespace std;
 
 int main()
 {
+
+
+
 	creat_log("./", NULL);
 	Game game(4, 6);
-	cout << game.buf_size << endl;
+	cout << game.m_bufSize << endl;
 }

@@ -51,9 +51,9 @@
     <NMakeCleanCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /clean "$(ProjectPath)" "/solution:$(SolutionPath)"  "/config:$(Configuration)" "/platform:$(Platform)"</NMakeCleanCommandLine>
     <NMakeReBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /rebuild "$(ProjectPath)" "/solution:$(SolutionPath)"  "/config:$(Configuration)" "/platform:$(Platform)"</NMakeReBuildCommandLine>
     <NMakeOutput>$(ProjectDir)russia-Debug.vgdbsettings</NMakeOutput>
-    <IncludePath />
+    <IncludePath>D:\code\russia\russia\include;$(IncludePath)</IncludePath>
     <ReferencePath />
-    <LibraryPath />
+    <LibraryPath>D:\code\russia\russia\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <NMakeIncludeSearchPath>$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\172.16.7.106\0000\include\c++\7;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\172.16.7.106\0000\include\x86_64-linux-gnu\c++\7;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\172.16.7.106\0000\include\c++\7\backward;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\172.16.7.106\0001\include;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\172.16.7.106\0003\include;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\172.16.7.106\0002\include-fixed;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\172.16.7.106\0000\include\x86_64-linux-gnu;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\172.16.7.106\0000\include;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
@@ -86,5 +86,6 @@
   <ItemGroup>
     <ClInclude Include="include\head4log.h" />
     <ClInclude Include="include\russia.h" />
+    <ClInclude Include="input.h" />
   </ItemGroup>
 </Project>
